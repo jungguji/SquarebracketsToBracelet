@@ -90,11 +90,11 @@ public class Main {
 
         for (int i = 0; i < strArray.length; i++) {
             if (i != 0 && !SEPARATOR.equals(strArray[i]) && !SEPARATOR.equals(strArray[i-1])) {
-                sb.append(",");
+                sb.append(", ");
             }
 
             sb.append(quote);
-            sb.append(strArray[i]);
+            sb.append(strArray[i].trim());
             sb.append(quote);
         }
 

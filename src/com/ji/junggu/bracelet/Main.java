@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 
 public class Main {
     private static final String STRING = "string";
-    private static final String INTEGER = "int";
     private static final String CHAR = "char";
 
     private static final String SQUARE_BRACKETS_LEFT = "[";
@@ -31,7 +30,7 @@ public class Main {
 
             StringBuilder sb = new StringBuilder();
             sb.append("new ");
-            sb.append(type);
+            sb.append(getInstanceType(type));
 
             for (int i = 0; i < dimension; i++) {
                 sb.append(SQUARE_BRACKETS_LEFT).append(SQUARE_BRACKETS_RIGHT);
@@ -83,7 +82,7 @@ public class Main {
             quote = "'";
         }
 
-        String content = new String(array).replace("],[", ",@,").replace(SQUARE_BRACKETS_RIGHT, "").replace(SQUARE_BRACKETS_LEFT, "").trim();
+        String content = new String(array).replace("], [", ",@,").replace(SQUARE_BRACKETS_RIGHT, "").replace(SQUARE_BRACKETS_LEFT, "").trim();
 
         String[] strArray = content.split(",");
         StringBuilder sb = new StringBuilder();
@@ -99,6 +98,20 @@ public class Main {
         }
 
         String target = quote + SEPARATOR + quote;
-        return sb.toString().replace(target, "},{");
+        return sb.toString().replace(target, "}, {");
+    }
+
+    private static String getInstanceType(String type) {
+        String returnType;
+        switch (type) {
+            case STRING :
+                returnType = "String";
+                break;
+            default:
+                returnType = type;
+                break;
+        }
+
+        return returnType;
     }
 }

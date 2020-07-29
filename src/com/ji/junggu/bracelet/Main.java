@@ -46,7 +46,6 @@ public class Main {
                 sb.append(BRACELET_RIGHT);
             }
 
-            sb.append(";");
             System.out.println(sb.toString());
         } catch (IOException e) {
             e.printStackTrace();
